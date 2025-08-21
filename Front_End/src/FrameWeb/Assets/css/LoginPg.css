@@ -1,0 +1,78 @@
+/* .master{
+    background-image: url(../img/logo.jpeg);
+    height: auto;
+    padding: 89px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+/* }  */
+.master::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../img/logo.jpeg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(8px);
+    z-index: 0;
+}
+
+
+.master > * {
+    position: relative;
+    z-index: 1;
+}
+.mainlogin{
+    position: fixed;
+    top: 30%;
+    left: 34%;
+    height: 350px;
+    background-color: rgba(214, 224, 226, 0.447);
+    width: 500px;
+    /* padding-left: 40px; */
+    margin: auto;
+    /* margin-top: 40px;  */
+    /* margin-left: 500px; */
+    border-radius: 20px;
+    /* margin-top: 200px; */
+    transition: transform 0.5s ease-in-out, left 0.5s ease-in-out;
+}
+.mainlogin h2{
+    
+    padding-top: 40px;
+    font-family: 'Times New Roman', Times, serif;
+    padding-left: 100px;
+   
+}
+.email{
+    margin-top: 50px;
+    margin-left: 80px;
+    border: none;
+    border-radius: 5px;
+    width: 350px;
+}
+.pass{
+    margin-left: 80px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    width: 350px;
+}
+.loginbtn{
+    background: linear-gradient(150deg, #478cd19d, #c248eb);
+    cursor: pointer;
+    height: 40px;
+    width: 80px;
+    
+}
+.loginbtn:hover{
+    opacity: 0.7;
+}
+.mainlogin:hover{
+     transform: scale(1.1);
+}
