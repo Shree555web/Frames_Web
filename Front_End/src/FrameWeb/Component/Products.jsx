@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import Base_Url from "./api";
 
 const Products = () => {
   const { id } = useParams(); // get category id or product id from URL
@@ -12,7 +13,7 @@ const Products = () => {
   const getData = () => {
     // if your backend supports filtering by category id via query param:
     axios
-      .get(`http://localhost:3005/api/product/category/${id}`)
+      .get(`${Base_Url}/api/product/category/${id}`)
       .then((res) => {
         setData(res.data);
         console.log("data fetched", res.data);
@@ -23,7 +24,7 @@ const Products = () => {
   };
   const getCat = () => {
     axios
-      .get(`http://localhost:3005/api/category/${id}`)
+      .get(`${Base_Url}/api/category/${id}`)
       .then((res) => {
         setcat(res.data[0]);
         console.log(
@@ -74,7 +75,7 @@ const Products = () => {
         <div
           className="position-absolute top-0 start-0 w-100 h-100"
           style={{
-            backgroundImage: `url(http://localhost:3005/uploads/${cat.Cat_Photo})`,
+            backgroundImage: `url(${Base_Url}/uploads/${cat.Cat_photo})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             filter: "blur(10px)",
@@ -82,7 +83,7 @@ const Products = () => {
           }}
         ></div>
         <div className="position-relative text-light" style={{ zi: 5 }}>
-          <h1 className="fw-bold text-shadow ">{cat.Cat_Title} Products</h1>
+          <h1 className="fw-bold text-shadow ">{cat.Cat_title} Products</h1>
           <div className="d-flex flex-wrap justify-content-center">
             {data.map((prod) => (
               <div

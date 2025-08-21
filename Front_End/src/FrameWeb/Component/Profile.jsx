@@ -47,6 +47,7 @@
 
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Base_Url from './api';
 
 const Profile = () => {
   const [user, setUser] = useState({});
@@ -65,7 +66,7 @@ const Profile = () => {
         {/* Profile Image */}
         <div className="position-absolute top-0 start-50 translate-middle" >
           <img
-            src={`http://localhost:3005/uploads/${user.profile}`}
+            src={`${Base_Url}/uploads/${user.profile}`}
             alt="Profile"
             className="rounded-circle shadow"
             width="150"

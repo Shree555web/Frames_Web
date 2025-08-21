@@ -10,6 +10,7 @@ import {
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Base_Url from "./api";
 const Checkout = () => {
   const [data, setdata] = useState([]);
 
@@ -70,7 +71,7 @@ const Checkout = () => {
     };
 
     axios
-      .post(`http://localhost:3005/api/bill`, billData)
+      .post(`${Base_Url}/api/bill`, billData)
       .then((res) => {
         alert("Bill saved successfully");
         localStorage.removeItem("cart"); // clear cart after checkout

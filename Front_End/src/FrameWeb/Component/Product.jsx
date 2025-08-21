@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import Base_Url from "./api";
 
 // import '../assets/Css/Product1.css';
 // import Images from '../assets/images/img4.webp';
@@ -13,7 +14,7 @@ const Product = () => {
   const getData = () => {
     // if your backend supports filtering by product id via query param:
     axios
-      .get(`http://localhost:3005/api/product/${id}`)
+      .get(`${Base_Url}/api/product/${id}`)
       .then((res) => {
         setData(res.data);
         console.log("data fetched", res.data);

@@ -19,17 +19,16 @@ const App = () => {
   return (
     <BrowserRouter>
     <Routes>
-      <Route path='/' element={<LoginPg/>}/>
       <Route path='/Account' element={<ProfilePg/>}/>
       <Route path='/cart' element={<CartPg/>}/>
       <Route path='/che' element={<CheckoutPg/>}/>
-      <Route path='/reg' element={<RegisterPg/>}/>
+      <Route path='/login' element={<RegisterPg/>}/>
       <Route path='/service' element={<ServicePg/>}/>
       <Route path='/policy' element={<PolicyPg/>}/>
       <Route path='/products/:id' element={<ProductsPg/>}/>
       <Route path='/product/:id' element={<ProductPg/>}/>
       <Route path='/admin' element={<Adminpg/>}/>
-      <Route path='/home' element={<HomePg/>}/>
+      <Route path='/' element={<HomePg/>}/>
       <Route path='/about' element={<AboutPg/>}/>
       <Route path='/contact' element={<ContactPg/>}/>
       <Route path='/orders' element={<OrdersPg/>}/>

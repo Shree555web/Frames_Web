@@ -3,13 +3,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../Assets/css/main.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Base_Url from "./api";
 
 function Hero() {
   const [data, setdata] = useState([]);
 
   const getdata = () => {
     axios
-      .get("http://localhost:3005/api/category/getdata")
+      .get(`${Base_Url}/api/category/getdata`)
       .then((res) => {
         setdata(res.data);
         console.log("data fetched", res.data);
@@ -18,6 +19,7 @@ function Hero() {
         console.log("Error fetching data", err);
       });
   };
+  
 
   useEffect(() => {
     getdata();
@@ -41,7 +43,7 @@ function Hero() {
               }}
             >
               <img
-                src={`http://localhost:3005/uploads/${data.Cat_Photo}`}
+                src={`${Base_Url}/uploads/${data.Cat_Photo}`}
                 className="d-block w-100 "
                 alt={data.Cat_Title}
                 style={{
@@ -117,7 +119,7 @@ function Hero() {
                   className="btn btn-primary"
                 >
                   <img
-                    src={`http://localhost:3005/uploads/${cat.Cat_photo}`}
+                    src={`${Base_Url}/uploads/${cat.Cat_photo}`}
                     className="card-img-top rounded-3"
                     alt="..."
                   />

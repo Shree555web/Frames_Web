@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Base_Url from './api';
 
 function Admin() {
   const [product, setProduct] = useState({
@@ -14,7 +15,7 @@ function Admin() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3005/api/category/getdata')
+    axios.get(`${Base_Url}/api/category/getdata`)
       .then(res => setCategories(res.data))
       .catch(err => console.error(err));
   }, []);
@@ -36,7 +37,7 @@ function Admin() {
     }
     formData.append('Product_Image', Product_Image);
 
-    axios.post('http://localhost:3005/api/Product/add', formData)
+    axios.post(`${Base_Url}/api/Product/add`, formData)
       .then(res => {
         alert('Product added successfully!');
         setProduct({
@@ -88,7 +89,7 @@ function Admin() {
           <select name="Category_id" className="form-select" value={product.Category_id} onChange={handleChange} required>
             <option value="">-- Select Category --</option>
             {categories.map(cat => (
-              <option key={cat.Category_id} value={cat.Category_id}>{cat.Cat_Title}</option>
+              <option key={cat.Category_id} value={cat.Category_id}>{cat.Cat_title}</option>
             ))}
           </select>
         </div>

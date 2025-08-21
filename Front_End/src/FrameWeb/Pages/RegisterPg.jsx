@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Footer from "../Component/Footer";
 import Header from "../Component/Header";
+import Base_Url from "../Component/api";
 
 const RegisterPg = () => {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ const RegisterPg = () => {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`http://localhost:3005/api/login`, loginForm)
+      .post(`${Base_Url}/api/login`, loginForm)
       .then((res) => {
         if (res.status === 200) {
           localStorage.setItem("user", JSON.stringify(res.data.user));
@@ -55,7 +56,7 @@ const RegisterPg = () => {
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`http://localhost:3005/api/reg`, registerForm)
+      .post(`${Base_Url}/api/reg`, registerForm)
       .then((res) => {
         alert("Registration successful. Please log in.");
         setActivePanel("signIn");

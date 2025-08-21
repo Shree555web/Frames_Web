@@ -64,7 +64,7 @@ function Footer() {
         <Row>
           <Col className="text-center pb-3">
             <small>
-              © 2020 VibeSpectacles. All Rights Reserved | Design by <a href="" className="text-decoration-none text-warning">4S,Team</a>
+              © 2020 VibeSpectacles. All Rights Reserved | Design by <a href="" className="text-decoration-none text-primary">4S,Team</a>
             </small>
           </Col>
         </Row>
