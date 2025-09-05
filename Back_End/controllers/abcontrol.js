@@ -19,7 +19,7 @@ exports.addCategory = (req, res) => {
 exports.getCategory = (req, res) => {
     db.query("SELECT * FROM Category", (err, result) => {
         if (err) return res.status(500).send("DB error");
-        res.json(result);
+        res.json(result[0]);
     });
 };
 
@@ -28,7 +28,7 @@ exports.getcatinfo = (req, res) => {
     const id = req.params.id;
     db.query("SELECT * FROM category WHERE Category_id = ?", [id], (err, result) => {
         if (err) return res.status(500).send("DB error"),console.log(err);
-        res.json(result);
+        res.json(result[0]);
     });
 };
 

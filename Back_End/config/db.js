@@ -3,7 +3,8 @@ const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',       // keep empty for XAMPP
-    database: 'frames_db' // create this DB in phpMyAdmin
+    database: 'frames_db', // create this DB in phpMyAdmin
+    port: 3307 // xampp's new port (modified)
 });
 connection.connect((err) => {
     if (err) {

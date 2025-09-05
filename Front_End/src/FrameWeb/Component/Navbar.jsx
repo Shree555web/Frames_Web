@@ -63,7 +63,7 @@ const Navbar = () => {
             </li>
             {!isLoggedIn ? (
               <li>
-                <Link to="/">
+                <Link to="/login">
                   <button className="btn btn-warning mt-1">Log in</button>
                 </Link>
               </li>
