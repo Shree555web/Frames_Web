@@ -23,7 +23,7 @@ const RegisterPg = () => {
     password: "",
     contact: "",
     address: "",
-    Profile: ""
+    profile: "",
   });
 
   const handleLoginChange = (e) => {
@@ -38,25 +38,35 @@ const RegisterPg = () => {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`${Base_Url}/api/login`, loginForm)
+      .post(`${Base_Url}/login`, loginForm)
       .then((res) => {
         if (res.status === 200) {
           localStorage.setItem("user", JSON.stringify(res.data.user));
           alert("Login successful");
-          navigate("/home");
+          navigate("/");
         }
       })
       .catch((err) => {
         console.error("Error", err);
-        alert("Login failed");
+        alert("Login failed \nInvalid Id or Pass");
       });
   };
 
-  // Handle registration submit (optional logic — backend must support this)
+  // Handle registration submit
   const handleRegisterSubmit = (e) => {
+    const formData = new FormData();
+    for (const key in registerForm) {
+      formData.append(key, registerForm[key]);
+    }
+
     e.preventDefault();
     axios
-      .post(`${Base_Url}/api/reg`, registerForm)
+      .post(`${Base_Url}/reg`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+
       .then((res) => {
         alert("Registration successful. Please log in.");
         setActivePanel("signIn");
@@ -70,17 +80,13 @@ const RegisterPg = () => {
   return (
     <>
       <Header />
-      <div
-        className="m-5 d-flex flex-column justify-content-center align-items-center"
-        
-      >
+      <div className="m-5 d-flex flex-column justify-content-center align-items-center">
         {/* Add 'right-panel-active' class conditionally */}
         <div
           className={`container1 rounded-3 container shadow-lg position-relative overflow-hidden mx-auto p-4 ${
             activePanel === "signUp" ? "right-panel-active" : ""
           }`}
-		  style={{ maxWidth: "768px", minHeight: "550px" }}
-
+          style={{ maxWidth: "768px", minHeight: "550px" }}
           id="container"
         >
           {/* Sign Up Form */}
@@ -129,13 +135,15 @@ const RegisterPg = () => {
                 required
               />
               <input
-                className="reg-image"
-                name="profile"
+                name="Profile"
                 type="file"
                 accept=".jpg"
-                value={registerForm.Profile}
-                onChange={handleRegisterChange}
-                //   required
+                onChange={(e) =>
+                  setRegisterForm((prev) => ({
+                    ...prev,
+                    profile: e.target.files[0],
+                  }))
+                }
               />
 
               <button type="submit">Sign Up</button>

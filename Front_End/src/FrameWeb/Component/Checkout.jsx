@@ -71,12 +71,12 @@ const Checkout = () => {
     };
 
     axios
-      .post(`${Base_Url}/api/bill`, billData)
+      .post(`${Base_Url}/bill`, billData)
       .then((res) => {
         alert("Bill saved successfully");
         localStorage.removeItem("cart"); // clear cart after checkout
         setCart([]);
-        navigate("/home");
+        navigate("/");
       })
       .catch((err) => console.log(err));
   };

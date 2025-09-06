@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
-import CheckoutPg from "../Pages/CheckoutPg";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Container, Row, Col, Card, Button} from "react-bootstrap";
+import { Link } from "react-router-dom";
 // import CheckoutPg from "../Pages/CheckoutPg";
 
 const Cart = () => {

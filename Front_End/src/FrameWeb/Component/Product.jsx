@@ -14,7 +14,7 @@ const Product = () => {
   const getData = () => {
     // if your backend supports filtering by product id via query param:
     axios
-      .get(`${Base_Url}/api/product/${id}`)
+      .get(`${Base_Url}/product/${id}`)
       .then((res) => {
         setData(res.data);
         console.log("data fetched", res.data);
@@ -42,7 +42,6 @@ const Product = () => {
     cart.push({ ...product, quantity: 1 });
     localStorage.setItem("cart", JSON.stringify(cart));
     alert(`${product.Product_Name} added to cart!`);
-    nav("/cart");
   };
 
   useEffect(() => {

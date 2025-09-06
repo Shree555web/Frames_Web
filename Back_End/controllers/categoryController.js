@@ -1,37 +1,65 @@
 // controllers/registrationController.js
-const db = require('../config/db');
+const dbconnect = require("../config/db");
 
 // ✅ Add new registration with image
 exports.addCategory = (req, res) => {
-    const { cattitle, catdesc} = req.body;
-    const Cat_Photo = req.file ? req.file.filename : '';
+  const { cattitle, catdesc } = req.body;
+  const Cat_Photo = req.file ? req.file.filename : "";
 
-    const sql = `INSERT INTO Category (Category_id, Cat_Title, Cat_Description, Cat_Photo) 
+  const db = dbconnect();
+
+  db.connect((err) => {
+    if (err) console.error("❌ DB connection failed:", err);
+    else console.log("✅ Connected to TiDB Cloud!");
+  });
+
+  const sql = `INSERT INTO Category (Category_id, Cat_Title, Cat_Description, Cat_Photo) 
                 VALUES ('',"${cattitle}", "${catdesc}","${Cat_Photo}")`;
 
-    db.query(sql, (err, result) => {
-        if (err) res.status(500).send('Insert error'),console.error("Insert error:", err);
-        else res.send('Category added successfully');
-    });
+  db.query(sql, (err, result) => {
+    db.end();
+    if (err)
+      res.status(500).send("Insert error"), console.error("Insert error:", err);
+    else res.send("Category added successfully");
+  });
 };
 
 // ✅ Get all users
 exports.getCategory = (req, res) => {
-    db.query("SELECT * FROM Category", (err, result) => {
-        if (err) return res.status(500).send("DB error");
-        res.json(result);
-    });
+  const db = dbconnect();
+
+  db.connect((err) => {
+    if (err) console.error("❌ DB connection failed:", err);
+    else console.log("✅ Connected to TiDB Cloud!");
+  });
+
+  db.query("SELECT * FROM Category", (err, result) => {
+    db.end();
+    if (err) return res.status(500).send("DB error");
+    res.json(result);
+  });
 };
 
 // ✅ Get single user
 exports.getcatinfo = (req, res) => {
-    const id = req.params.id;
-    db.query("SELECT * FROM category WHERE Category_id = ?", [id], (err, result) => {
-        if (err) return res.status(500).send("DB error"),console.log(err);
-        res.json(result);
-    });
-};
+  const db = dbconnect();
 
+  db.connect((err) => {
+    if (err) console.error("❌ DB connection failed:", err);
+    else console.log("✅ Connected to TiDB Cloud!");
+  });
+
+  const id = req.params.id;
+  db.query(
+    "SELECT * FROM category WHERE Category_id = ?",
+    [id],
+    (err, result) => {
+      db.end();
+      if (err) return res.status(500).send("DB error"), console.log(err);
+      res.json(result);
+    }
+  );
+};
 
 // exports.catname = (req, res) => {
 //   const categoryId = req.params.id;
@@ -47,8 +75,6 @@ exports.getcatinfo = (req, res) => {
 //     res.json(results[0]);  // e.g. { Category_Name: "Men's Section" }
 //   });
 // });
-
-
 
 // // ✅ Update user (with optional image)
 // exports.updateUser = (req, res) => {

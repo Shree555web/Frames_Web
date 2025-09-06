@@ -13,7 +13,7 @@ const Products = () => {
   const getData = () => {
     // if your backend supports filtering by category id via query param:
     axios
-      .get(`${Base_Url}/api/product/category/${id}`)
+      .get(`${Base_Url}/product/category/${id}`)
       .then((res) => {
         setData(res.data);
         console.log("data fetched", res.data);
@@ -24,13 +24,13 @@ const Products = () => {
   };
   const getCat = () => {
     axios
-      .get(`${Base_Url}/api/category/${id}`)
+      .get(`${Base_Url}/category/${id}`)
       .then((res) => {
         setcat(res.data[0]);
         console.log(
           "cat fetched",
-          res.data[0].Cat_Title,
-          res.data[0].Cat_Photo
+          res.data[0].Cat_title,
+          res.data[0].Cat_photo
         );
       })
       .catch((err) => {
@@ -50,7 +50,7 @@ const Products = () => {
 
     if (!user) {
       alert("Please login before adding items to cart!");
-      nav("/"); // redirect to login page
+      nav("/login"); // redirect to login page
       return;
     }
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -63,7 +63,6 @@ const Products = () => {
     cart.push({ ...product, quantity: 1 });
     localStorage.setItem("cart", JSON.stringify(cart));
     alert(`${product.Product_Name} added to cart!`);
-    nav("/cart");
   };
 
   return (

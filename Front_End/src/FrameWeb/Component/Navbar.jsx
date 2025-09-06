@@ -13,7 +13,7 @@ const Navbar = () => {
 
   const handlelogout = () => {
     localStorage.removeItem("user");
-    nav("/home");
+    nav("/");
   };
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const Navbar = () => {
 
           <ul className="navbar-nav d-flex gap-3 flex-row ms-auto mb-2 ">
             <li className="nav-item">
-              <Link className="nav-link" to="/home">
+              <Link className="nav-link" to="/">
                 Home
               </Link>
             </li>
@@ -56,7 +56,7 @@ const Navbar = () => {
               <Link to='/cart'>
               <img src={`${Base_Url}/uploads/cart.jpg`}
                   alt="uart"
-                  className="rounded-circle"
+                  className="rounded-circle mt-3"
                   style={{ height: "40px", width: "40px", cursor: "pointer" }} 
                />
                </Link>
@@ -64,7 +64,7 @@ const Navbar = () => {
             {!isLoggedIn ? (
               <li>
                 <Link to="/login">
-                  <button className="btn btn-warning mt-1">Log in</button>
+                  <button className="btn btn-warning mt-3">Log in</button>
                 </Link>
               </li>
             ) : (
@@ -72,7 +72,7 @@ const Navbar = () => {
                 <img
                   src={`${Base_Url}/uploads/${Account.profile}`}
                   alt="User"
-                  className="rounded-circle"
+                  className="rounded-circle mt-3"
                   style={{ height: "40px", width: "40px", cursor: "pointer" }}
                   onClick={() => setDropdown(!dropdown)}
                 />

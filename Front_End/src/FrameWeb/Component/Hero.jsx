@@ -10,7 +10,7 @@ function Hero() {
 
   const getdata = () => {
     axios
-      .get(`${Base_Url}/api/category/getdata`)
+      .get(`${Base_Url}/category/getdata`)
       .then((res) => {
         setdata(res.data);
         console.log("data fetched", res.data);
@@ -34,7 +34,7 @@ function Hero() {
         data-bs-interval="3000"
       >
         <div className="carousel-inner">
-          {data.map((data, i) => (
+          {data.map((data,i) => (
             <div
               className={`carousel-item ${i === 0 ? "active" : ""}`}
               key={data.Category_id}
@@ -43,7 +43,7 @@ function Hero() {
               }}
             >
               <img
-                src={`${Base_Url}/uploads/${data.Cat_Photo}`}
+                src={`${Base_Url}/uploads/${data.Cat_photo}`}
                 className="d-block w-100 "
                 alt={data.Cat_Title}
                 style={{
@@ -58,8 +58,8 @@ function Hero() {
                 className="carousel-caption d-block text-white"
                 style={{ position: "absolute", top: "70%" }}
               >
-                <h1 className="fw-bold text-shadow ">{data.Cat_Title}</h1>
-                <div className="my-5">
+                <h1 className="fw-bold text-shadow ">{data.Cat_title}</h1>
+                <div className="my-4">
                   <Link
                     to={`/products/${i + 1}`}
                     className="btn btn-warning"

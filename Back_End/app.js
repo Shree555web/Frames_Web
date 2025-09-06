@@ -48,7 +48,7 @@ app.use('/api/bill', billRoutes);
 app.use('/api', LoginRoutes);
 app.use('/api/category', categoryRoutes);
 app.use('/api/Product', productRoutes);
-app.use('/uploads', express.static('uploads')); 
+app.use('/api/uploads', express.static('uploads')); 
 
 app.listen(PORT, () => {
   console.log(`STEP 4: Server running at http://localhost:${PORT}`);

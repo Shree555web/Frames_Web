@@ -1,10 +1,17 @@
-const db = require('../config/db');
+const dbconnect = require('../config/db');
 
 exports.login = (req, res) => {
     const { email, password } = req.body;
+    const db = dbconnect();
+   
+     db.connect((err) => {
+       if (err) console.error("❌ DB connection failed:", err);
+       else console.log("✅ Connected to TiDB Cloud!");
+     });
 
-    const sql = `SELECT * FROM  signup WHERE email = ? AND pass= ?;`
+    const sql = `SELECT * FROM Users  WHERE email = ? AND pass= ?;`
     db.query(sql, [email, password], (err, result) => {
+      db.end();
         if (err) {
             console.log("Login error", err);
             return res.status(500).send("DB error");
@@ -26,11 +33,18 @@ exports.login = (req, res) => {
 exports.registerUser = (req, res) => {
   const { name, email, password, contact, address } = req.body;
   const profile = req.file ? req.file.filename : 'profile.jpg';
+  const db = dbconnect();
+  
+    db.connect((err) => {
+      if (err) console.error("❌ DB connection failed:", err);
+      else console.log("✅ Connected to TiDB Cloud!");
+    });
 
-  const sql = `INSERT INTO signup (name, email, pass, contact, address, profile) VALUES (?, ?, ?, ?, ?, ?)`;
+  const sql = `INSERT INTO Users (name, email, pass, contact, address, profile) VALUES (?, ?, ?, ?, ?, ?)`;
   const values = [name, email, password, contact, address, profile];
 
   db.query(sql, values, (err, result) => {
+    db.end();
     if (err) {
       console.error("DB Insert Error:", err);
       return res.status(500).json({ msg: "Registration failed" });
