@@ -1,7 +1,6 @@
 import React from 'react'
 import HomePg from './FrameWeb/Pages/HomePg'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import LoginPg from './FrameWeb/Pages/LoginPg'
 import AboutPg from './FrameWeb/Pages/AboutPg'
 import ContactPg from './FrameWeb/Pages/ContactPg'
 import OrdersPg from './FrameWeb/Pages/OrdersPg'

@@ -51,5 +51,5 @@ app.use('/api/Product', productRoutes);
 app.use('/api/uploads', express.static('uploads')); 
 
 app.listen(PORT, () => {
-  console.log(`STEP 4: Server running at http://localhost:${PORT}`);
+  // console.log(`STEP 4: Server running at http://localhost:${PORT}`);
 });

@@ -60,7 +60,9 @@ exports.getProduct = (req, res) => {
     const updatedResults = results.map((product) => {
       return {
         ...product,
-        Product_Image: `http://localhost:3005/api/uploads/${product.Product_Image}`,
+        
+        // Product_Image: `http://localhost:3005/api/uploads/${product.Product_Image}`,
+        Product_Image: `https://frames-web.onrender.com/api/uploads/${product.Product_Image}`,
       };
     });
 
@@ -98,7 +100,9 @@ exports.getProductById = (req, res) => {
     if (result.length === 0) return res.status(404).send("Not found");
 
     const product = result[0];
-    product.Product_Image = `http://localhost:3005/api/uploads/${product.Product_Image}`;
+    
+    // product.Product_Image = `http://localhost:3005/api/uploads/${product.Product_Image}`;
+    product.Product_Image = `https://frames-web.onrender.com/api/uploads/${product.Product_Image}`;
 
     res.json(product);
   });
