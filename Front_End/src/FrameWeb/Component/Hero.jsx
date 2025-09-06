@@ -45,7 +45,7 @@ function Hero() {
               <img
                 src={`${Base_Url}/uploads/${data.Cat_photo}`}
                 className="d-block w-100 "
-                alt={data.Cat_Title}
+                alt={data.Cat_title}
                 style={{
                   // filter: 'blur(5px)',
                   height: "30%",
@@ -58,8 +58,8 @@ function Hero() {
                 className="carousel-caption d-block text-white"
                 style={{ position: "absolute", top: "70%" }}
               >
-                <h1 className="fw-bold text-shadow ">{data.Cat_title}</h1>
-                <div className="my-4">
+                <h1 className="fw-bold text-shadow ">{data.Cat_Title}</h1>
+                <div className="my-5">
                   <Link
                     to={`/products/${i + 1}`}
                     className="btn btn-warning"
@@ -98,7 +98,7 @@ function Hero() {
         <div
           className="position-absolute top-0 start-0 w-100 h-100"
           style={{
-            backgroundImage: "url(src/FrameWeb/Assets/img/logo.jpeg)",
+            backgroundImage: "url(https://frames-web-eight.vercel.app/assets/logo-DUe7Vfns.jpeg)",
             backgroundSize: "cover",
             backgroundPosition: "center",
             filter: "blur(10px)",
